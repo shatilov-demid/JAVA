@@ -6,9 +6,28 @@ public class Main {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         System.out.println("Введите промежуток от");
-        int x = in.nextInt();
+        String xx = in.next();
+        try {
+            if (Integer.valueOf(xx) <= 0) {
+                throw new IllegalArgumentException("Начало промежутка должен быть простым числом");
+            }
+        } catch (IllegalArgumentException e) {
+            System.out.println("Введите простое число");
+            xx=in.next();
+        }
         System.out.println("до");
-        int y= in.nextInt();
+        String yy = in.next();
+        try {
+            if (Integer.valueOf(yy) <= 0) {
+                throw new IllegalArgumentException("Конец промежутка должен быть простым числом");
+            }
+        } catch (IllegalArgumentException e) {
+            System.out.println("Введите простое число");
+            yy=in.next();
+        }
+        in.close();
+        int x = Integer.valueOf(xx);
+        int y = Integer.valueOf(yy);
         for (int i=x; i <= y; i++)
         {
             if (i == 0)
@@ -25,7 +44,5 @@ public class Main {
                System.out.println(i);
            }
         }
-
-        in.close();
     }
 }
